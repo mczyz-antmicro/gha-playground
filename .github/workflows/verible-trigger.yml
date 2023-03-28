@@ -6,4 +6,4 @@ jobs:
   verible-trigger:
     runs-on: ubuntu-latest
     steps:
-      - uses: chipsalliance/verible-linter-action/trigger-send@main
+      - uses: chipsalliance/verible-formatter-action/trigger-send@main

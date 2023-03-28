@@ -9,8 +9,8 @@ jobs:
   verible-review:
     runs-on: ubuntu-latest
     steps:
-      - uses: chipsalliance/verible-linter-action/trigger-receive@main
+      - uses: chipsalliance/verible-formatter-action/trigger-receive@main
       - name: Run Verible action
-        uses: chipsalliance/verible-linter-action@main
+        uses: chipsalliance/verible-formatter-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
