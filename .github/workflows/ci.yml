@@ -6,30 +6,37 @@ on:
 
 jobs:
 
+  Build-Verilator:
+    name: Build-Verilator
+    uses: ./.github/workflows/A.yml
+
   Test-Verification:
     name: Test-Verification
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install prerequisities
-        run: |
-          echo "A"
+    needs: [Build-Verilator]
+    uses: ./.github/workflows/A.yml
 
   Test-Regression:
     name: Test-Regression
-    uses: ./.github/workflows/B.yml
+    needs: [Build-Verilator]
+    uses: ./.github/workflows/A.yml
 
-  Coverage-Generator:
-    name: Coverage-Generator
-    needs: [Test-Verification,Test-Regression]
-    uses: ./.github/workflows/B.yml
+  Test-Other:
+    name: Test-Other
+    needs: [Build-Verilator]
+    uses: ./.github/workflows/A.yml
 
-  Publish-Coverage-to-GH-Pages:
-    name: Publish-Coverage-to-GH-Pages
-    needs: Coverage-Generator
-    uses: ./.github/workflows/C.yml
+  Report-Coverage:
+    name: Report-Coverage
+    needs: [Test-Verification,Test-Regression, Test-Other]
+    uses: ./.github/workflows/A.yml
 
-  Publish-PyTestHtml-to-GH-Pages:
-    name: Publish-PyTestHtml-to-GH-Pages
-    needs: Test-Verification
-    uses: ./.github/workflows/C.yml
+  Report-Pytest:
+    name: Report-Pytest
+    needs: [Test-Verification]
+    uses: ./.github/workflows/A.yml
+
+  Publish-to-GH-Pages:
+    name: Publish-to-GH-Pages
+    needs: [Report-Coverage, Report-Pytest]
+    uses: ./.github/workflows/A.yml
 
