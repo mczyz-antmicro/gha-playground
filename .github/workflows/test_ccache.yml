@@ -30,6 +30,11 @@ jobs:
             echo "cache_date=$cache_date" >> "$GITHUB_ENV"
             echo "cache_name=$cache_name" >> "$GITHUB_ENV"
 
+        - name: build cpp
+          run: |
+            ccache g++ main.cpp
+            ./a.out
+
         - name: Setup cache
           uses: actions/cache@v3
           id: cache
@@ -37,4 +42,5 @@ jobs:
             path: |
               ${{ github.workspace }}/.hidden_dir/dir1
               ${{ github.workspace }}/dir2
+              /home/runner/.cache/ccache
             key: ${{ env.cache_name }}

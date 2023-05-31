@@ -17,6 +17,7 @@ jobs:
             path: |
               ${{ github.workspace }}/.hidden_dir/dir1
               ${{ github.workspace }}/dir2
+              /home/runner/.cache/ccache
             key: cache_2023_05_31
 
         - name: tree
@@ -26,3 +27,11 @@ jobs:
             tree -d
             cd .hidden_dir
             pwd
+
+        - name: build cpp
+          run: |
+            ccache -z
+            ccache --show-stats
+            ccache g++ main.cpp
+            ccache --show-stats
+            ./a.out
