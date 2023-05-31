@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  A:
+  Test-Verification:
     name: A
     runs-on: ubuntu-latest
     steps:
@@ -14,15 +14,20 @@ jobs:
         run: |
           echo "A"
 
-  B:
+  Test-Regression:
     name: B
     uses: ./.github/workflows/B.yml
 
-  C:
+  Coverage-Generator:
     name: C
     needs: [A,B]
     uses: ./.github/workflows/B.yml
 
-  D:
-    name: D
+  Publish-Coverage-to-GH-Pages:
+    needs: C
     uses: ./.github/workflows/C.yml
+
+  Publish-PyTestHtml-to-GH-Pages:
+    needs: A
+    uses: ./.github/workflows/C.yml
+
