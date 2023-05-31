@@ -13,7 +13,6 @@ jobs:
       steps:
         - name: Setup cache
           uses: actions/cache/restore@v3
-          id: cache
           with:
             path: |
               ${{ github.workspace }}/.hidden_dir/dir1
