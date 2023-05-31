@@ -20,14 +20,14 @@ jobs:
 
   Coverage-Generator:
     name: C
-    needs: [A,B]
+    needs: [Test-Verification,Test-Regression]
     uses: ./.github/workflows/B.yml
 
   Publish-Coverage-to-GH-Pages:
-    needs: C
+    needs: Coverage-Generator
     uses: ./.github/workflows/C.yml
 
   Publish-PyTestHtml-to-GH-Pages:
-    needs: A
+    needs: Test-Verification
     uses: ./.github/workflows/C.yml
 
