@@ -21,6 +21,7 @@ jobs:
 
   C:
     name: C
+    needs: [A,B]
     uses: ./.github/workflows/B.yml
 
   D:
