@@ -42,6 +42,7 @@ jobs:
         - name: build cpp
           run: |
             ccache -z
+            ccache --show-config
             ccache --show-stats
             ccache g++ main.cpp
             ccache --show-stats
