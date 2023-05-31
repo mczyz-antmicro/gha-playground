@@ -1,0 +1,38 @@
+name: Cache deposit
+
+on:
+  push:
+
+jobs:
+    deposit:
+      name: deposit
+      runs-on: ubuntu-latest
+      steps:
+        - name: Install prerequisities
+          run: |
+            mkdir dir1 dir2
+            pushd dir1
+              echo "hello world" >> file1.txt
+            popd
+            pushd dir2
+              echo "hello world2" >> file2.txt
+            popd
+
+        - name: Setup Cache Metadata
+          id: cache_metadata
+          run: |
+            cache_date=$(date +"%Y_%m_%d")
+            cache_name=cache_$cache_date
+            echo "Cache date: "$cache_date
+            echo "Cache name: "$cache_name
+            echo "cache_date=$cache_date" >> "$GITHUB_ENV"
+            echo "cache_name=$cache_name" >> "$GITHUB_ENV"
+
+        - name: Setup cache
+          uses: actions/cache@v3
+          id: cache
+          with:
+            path: |
+              ${{ github.workspace }}/dir1
+              ${{ github.workspace }}/dir2
+            key: ${{ env.cache_name }}
