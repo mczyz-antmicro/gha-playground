@@ -17,6 +17,8 @@ jobs:
             pushd dir2
               echo "hello world2" >> file2.txt
             popd
+            mkdir .hidden_dir
+            mv dir1 .hidden_dir
 
         - name: Setup Cache Metadata
           id: cache_metadata

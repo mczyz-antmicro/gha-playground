@@ -45,4 +45,3 @@ jobs:
           run: |
             ls -al *
             tree -d
-            ls -al /*
