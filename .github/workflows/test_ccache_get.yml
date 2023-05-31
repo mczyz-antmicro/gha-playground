@@ -38,12 +38,13 @@ jobs:
             tree -d
             cd .hidden_dir
             pwd
+            echo "cache_dir_env="$CCACHE_DIR
 
         - name: build cpp
           run: |
             ccache -z
             ccache --show-config
             ccache --show-stats
-            ccache g++ main.cpp
+            ccache -v g++ main.cpp
             ccache --show-stats
             ./a.out
