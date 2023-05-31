@@ -3,6 +3,9 @@ name: Cache deposit
 on:
   push:
 
+env:
+  CCACHE_DIR: "/home/runner/.cache/"
+
 jobs:
     deposit:
       name: deposit

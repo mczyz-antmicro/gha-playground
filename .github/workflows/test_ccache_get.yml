@@ -48,6 +48,6 @@ jobs:
             ccache -z
             ccache --show-config
             ccache --show-stats
-            ccache -v g++ main.cpp
+            ccache g++ main.cpp
             ccache --show-stats
             ./a.out
