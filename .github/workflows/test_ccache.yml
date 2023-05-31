@@ -35,6 +35,6 @@ jobs:
           id: cache
           with:
             path: |
-              ${{ github.workspace }}/dir1
+              ${{ github.workspace }}/.hidden_dir/dir1
               ${{ github.workspace }}/dir2
             key: ${{ env.cache_name }}
