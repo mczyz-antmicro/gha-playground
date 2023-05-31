@@ -1,4 +1,4 @@
-name: Cache deposit
+name: Cache deposit get
 
 on:
   workflow_run:
