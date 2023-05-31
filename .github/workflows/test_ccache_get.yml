@@ -24,3 +24,4 @@ jobs:
           run: |
             ls -al *
             tree -d
+            cd .hidden_dir
