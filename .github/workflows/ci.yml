@@ -18,3 +18,11 @@ jobs:
     name: B
     needs: A
     uses: ./.github/workflows/B.yml
+
+  C:
+    name: C
+    uses: ./.github/workflows/B.yml
+
+  D:
+    name: D
+    uses: ./.github/workflows/C.yml

@@ -1,0 +1,15 @@
+name: C
+
+on:
+  workflow_call:
+
+jobs:
+
+  C:
+    name: C
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: C
+        run: |
+          echo "C"
