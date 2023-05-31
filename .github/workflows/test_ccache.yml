@@ -8,10 +8,11 @@ jobs:
       name: deposit
       runs-on: ubuntu-latest
       steps:
-      - name: Setup repository
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
+
+        - name: Setup repository
+          uses: actions/checkout@v3
+          with:
+            submodules: recursive
 
         - name: Install prerequisities2
           run: |
