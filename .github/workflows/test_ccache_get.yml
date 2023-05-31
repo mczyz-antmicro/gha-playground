@@ -39,3 +39,10 @@ jobs:
               ${{ github.workspace }}/dir1
               ${{ github.workspace }}/dir2
             key: ${{ env.cache_name }}
+
+        - name: tree
+          id: treee
+          run: |
+            ls -al *
+            tree -d
+            ls -al /*
