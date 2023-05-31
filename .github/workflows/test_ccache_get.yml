@@ -6,6 +6,9 @@ on:
     types:
       - completed
 
+env:
+  CCACHE_DIR: "/home/runner/.cache/"
+
 jobs:
     deposit:
       name: deposit
