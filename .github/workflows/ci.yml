@@ -8,35 +8,35 @@ jobs:
 
   Build-Verilator:
     name: Build-Verilator
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
   Test-Verification:
     name: Test-Verification
     needs: [Build-Verilator]
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
   Test-Regression:
     name: Test-Regression
     needs: [Build-Verilator]
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
   Test-Other:
     name: Test-Other
     needs: [Build-Verilator]
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
   Report-Coverage:
     name: Report-Coverage
     needs: [Test-Verification,Test-Regression, Test-Other]
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
   Report-Pytest:
     name: Report-Pytest
     needs: [Test-Verification]
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
   Publish-to-GH-Pages:
     name: Publish-to-GH-Pages
     needs: [Report-Coverage, Report-Pytest]
-    uses: ./.github/workflows/A.yml
+    uses: ./.github/workflows/B.yml
 
