@@ -25,3 +25,4 @@ jobs:
             ls -al *
             tree -d
             cd .hidden_dir
+            pwd
