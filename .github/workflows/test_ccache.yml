@@ -5,7 +5,7 @@ on:
 
 env:
   CCACHE_DIR: "/home/runner/.cache/"
-  MOCK_VERIFICATION_RUN: 'true'
+  MOCK_VERIFICATION_RUN: ${{ true }}
 
 jobs:
     deposit:
@@ -14,13 +14,13 @@ jobs:
       steps:
 
         - name: Run ${{ matrix.test }}
-          if: ${{ env.MOCK_VERIFICATION_RUN }} == 'false'
+          if: ${{ env.MOCK_VERIFICATION_RUN }} == ${{ false }}
           run: |
             echo "env is false"
             echo ${{ env.MOCK_VERIFICATION_RUN }}
 
         - name: Run ${{ matrix.test }}
-          if: ${{ env.MOCK_VERIFICATION_RUN }} == 'true'
+          if: ${{ env.MOCK_VERIFICATION_RUN }} == ${{ true }}
           run: |
             echo "env is true"
             echo ${{ env.MOCK_VERIFICATION_RUN }}
