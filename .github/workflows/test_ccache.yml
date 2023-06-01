@@ -5,12 +5,25 @@ on:
 
 env:
   CCACHE_DIR: "/home/runner/.cache/"
+  MOCK_VERIFICATION_RUN: 'true'
 
 jobs:
     deposit:
       name: deposit
       runs-on: ubuntu-latest
       steps:
+
+        - name: Run ${{ matrix.test }}
+          if: ${{ env.MOCK_VERIFICATION_RUN }} == 'false'
+          run: |
+            echo "env is false"
+            echo ${{ env.MOCK_VERIFICATION_RUN }}
+
+        - name: Run ${{ matrix.test }}
+          if: ${{ env.MOCK_VERIFICATION_RUN }} == 'true'
+          run: |
+            echo "env is true"
+            echo ${{ env.MOCK_VERIFICATION_RUN }}
 
         - name: Setup repository
           uses: actions/checkout@v3
