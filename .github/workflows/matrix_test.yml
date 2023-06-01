@@ -1,0 +1,41 @@
+name: Cache deposit
+
+on:
+  push:
+
+env:
+  CCACHE_DIR: "/home/runner/.cache/"
+  MOCK_VERIFICATION_RUN: true
+
+jobs:
+    deposit:
+      name: deposit
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          test: ["test_pyuvm", "test_cocotb","test_dev"]
+      steps:
+
+        - name: Run ${{ matrix.test }}
+          if: ${{ env.MOCK_VERIFICATION_RUN == 'false' }}
+          run: |
+            echo "env is false"
+            echo ${{ env.MOCK_VERIFICATION_RUN }}
+
+        - name: Run ${{ matrix.test }}
+          if: ${{ env.MOCK_VERIFICATION_RUN == 'true' }}
+          run: |
+            echo "env is true"
+            echo ${{ env.MOCK_VERIFICATION_RUN }}
+            mkdir -p webpage_${{ matrix.test }}
+            touch webpage_${{ matrix.test }}/index.html
+            mkdir webpage_${{ matrix.test }}/assets
+            touch webpage_${{ matrix.test }}/assets/css.css
+
+        - name: Upload artifacts
+          if: always()
+          uses: actions/upload-artifact@v3
+          with:
+            name: results
+            path: |
+              webpage_*
