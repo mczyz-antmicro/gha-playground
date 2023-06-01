@@ -5,7 +5,7 @@ on:
 
 env:
   CCACHE_DIR: "/home/runner/.cache/"
-  MOCK_VERIFICATION_RUN: ${{ true }}
+  MOCK_VERIFICATION_RUN: true
 
 jobs:
     deposit:
