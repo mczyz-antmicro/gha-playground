@@ -3,6 +3,9 @@ name: B
 on:
   workflow_call:
 
+env:
+  my_var: 96
+
 jobs:
 
   B:
@@ -13,3 +16,4 @@ jobs:
       - name: B
         run: |
           echo "B"
+          echo ${{ env.my_var }}

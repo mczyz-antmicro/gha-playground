@@ -9,6 +9,8 @@ jobs:
   Build-Verilator:
     name: Build-Verilator
     uses: ./.github/workflows/B.yml
+    with:
+      my_var: 123
 
   Test-Verification:
     name: Test-Verification
