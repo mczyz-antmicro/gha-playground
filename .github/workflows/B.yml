@@ -3,15 +3,12 @@ name: B
 on:
   workflow_call:
 
-env:
-  my_var: 96
-
 jobs:
-
   B:
     name: B
     runs-on: ubuntu-latest
-
+    env:
+      my_var: 96
     steps:
       - name: B
         run: |
