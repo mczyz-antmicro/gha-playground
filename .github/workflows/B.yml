@@ -14,3 +14,18 @@ jobs:
         run: |
           echo "B"
           echo ${{ env.my_var }}
+      - name: Setup environment
+        run: |
+          echo "{/opt/verilator/bin}" >> $GITHUB_PATH
+          RV_ROOT=`pwd`
+          echo "RV_ROOT=$RV_ROOT" >> $GITHUB_ENV
+          PYTHONUNBUFFERED=1
+          echo "PYTHONUNBUFFERED=$PYTHONUNBUFFERED" >> $GITHUB_ENV
+          TEST_PATH=$RV_ROOT/verification/test_debug
+          echo "TEST_PATH=$TEST_PATH" >> $GITHUB_ENV
+      - name: Setup environment
+        run: |
+          echo "PATH="$PATH
+          echo "PYTHONUNBUFFERED="$PYTHONUNBUFFERED
+          echo "TEST_PATH="$TEST_PATH
+          echo "RV_ROOT="$RV_ROOT

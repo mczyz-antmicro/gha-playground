@@ -71,3 +71,25 @@ jobs:
               ${{ github.workspace }}/dir2
               /home/runner/.cache/ccache
             key: ${{ env.cache_name }}
+
+
+
+
+
+
+          # TODO: fix once coverage is implemented
+            # mkdir -p coverage_${{ matrix.test }}
+            # mkdir -p ${{ github.workspace }}/results_${{ matrix.test }}
+            # mv coverage_${{matrix.test}} ${{ github.workspace }}/
+            # ./github/scripts/convert_coverage_data.sh all ${{ github.workspace }}/coverage ${{ github.workspace }}/results_${{ matrix.test }} coverage_${{ matrix.test }}
+
+
+
+      # TODO: fix once coverage is implemented
+      # - name: Upload coverage artifacts
+      #   if: always()
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: verification_tests_coverage_data
+      #     path: |
+      #       ./results/*.info
