@@ -29,3 +29,11 @@ jobs:
           echo "PYTHONUNBUFFERED="$PYTHONUNBUFFERED
           echo "TEST_PATH="$TEST_PATH
           echo "RV_ROOT="$RV_ROOT
+      - name: Print
+        run: |
+          echo "PR_NUMBER: ${{ github.event.number }}"
+          if [ "${{ github.event.number }}" != "" ]; then
+            echo "PR number is set"
+          else
+            echo "PR number is not set"
+          fi
